@@ -1,0 +1,10 @@
+---
+- hosts: ubuntu
+  become: true
+  tasks:
+    - name: Clone repo with docker-compose file
+      git:
+        repo: 'https://github.com/dima-frost/wp.git'
+        dest: ~/dc
+    - name: Run `docker-compose up`
+      command: docker-compose --file ./dc/docker-compose.yaml up -d
